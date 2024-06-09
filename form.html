@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="Styles.css">
+  <title>CORE SCOUTING SITE</title>
+  <link rel="icon" type="image/x-icon" href="/images/CORELogo.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+  <script>
+    function incrementValue(inputId) {
+      let input = document.getElementById(inputId);
+      input.value = parseInt(input.value) + 1;
+    }
+
+    function decrementValue(inputId) {
+      let input = document.getElementById(inputId);
+      input.value = Math.max(0, parseInt(input.value) - 1); // Ensure value doesn't go below 0
+    }
+
+    function generateQRCode() {
+      let matchNumber = document.getElementById('match_number').value;
+      let teamNumber = document.getElementById('team_number').value;
+      let scouterName = document.getElementById('scouter_name').value;
+      let color = document.getElementById('color').value;
+      let position = document.getElementById('position').value;
+      let autoScore = document.getElementById('auto_score').value;
+      let autoMove = document.getElementById('auto_move').checked;
+      let autoPenalty = document.getElementById('auto_penalty').checked;
+      let teleopScore = document.getElementById('teleop_score').value;
+      let timesRamped = document.getElementById('times_ramped').value;
+      let coOpPoint = document.getElementById('co_op_point').checked;
+      let highNote = document.getElementById('high_note').checked;
+      let trap = document.getElementById('trap').value;
+      let parking = document.getElementById('parking').value;
+      let comments = document.getElementById('comments').value;
+
+      let qrData = `
+        Match Number: ${matchNumber}
+        Team Number: ${teamNumber}
+        Scouter Name: ${scouterName}
+        Color: ${color}
+        Position: ${position}
+        Speakers Scored in Auto: ${autoScore}
+        Auto Move: ${autoMove}
+        Auto Penalty: ${autoPenalty}
+        Amy Scored in Teleop: ${teleopScore}
+        Times Ramped: ${timesRamped}
+        Co-op Point: ${coOpPoint}
+        High Note: ${highNote}
+        Trap: ${trap}
+        Parking: ${parking}
+        Comments: ${comments}
+        #
+      `;
+
+      let qrcodeContainer = document.getElementById("qrcode");
+      qrcodeContainer.innerHTML = ""; // Clear previous QR code
+      new QRCode(qrcodeContainer, {
+        text: qrData.trim(),
+        width: 256,
+        height: 256
+      });
+    }
+  </script>
+  <style>
+    body {
+      font-size: 1.2em; /* Increase font size */
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+    }
+
+    .menu li {
+      list-style: none;
+    }
+
+    .menu li a {
+      text-decoration: none;
+      padding: 15px;
+      display: block;
+      color: black;
+      font-size: 1.2em; /* Increase font size */
+    }
+
+    .container {
+      padding: 20px;
+      font-size: 1.2em; /* Increase font size */
+    }
+
+    input, select, textarea {
+      font-size: 1.2em; /* Increase font size */
+      margin-bottom: 10px;
+      width: 100%;
+    }
+
+    input[type="checkbox"] {
+      width: 1.5em;
+      height: 1.5em;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .button-container button, .button-container input[type="button"] {
+      width: 48%;
+      font-size: 1.5em; /* Increase button size */
+      padding: 10px; /* Increase button padding */
+    }
+
+    .label-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .label-container span {
+      width: 70%;
+    }
+
+    .value-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .value-container input {
+      text-align: center;
+      width: 50px; /* Set width for the input box */
+    }
+
+    .value-container button {
+      font-size: 1.2em; /* Match button size to input box */
+      width: 50px; /* Set width for the buttons */
+      height: 40px; /* Set height for the buttons */
+    }
+
+    @media (max-width: 600px) {
+      .menu {
+        display: block;
+      }
+
+      .container {
+        width: 100%;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="outline">
+    <h1 class="Title">C.O.R.E.2062 SCOUTING WEBSITE</h1>
+    <h3 class="UnderClass">Community Of Robotics Engineers</h3>
+    <ul class="menu">
+      <li><a href="./index.html" class="active">HOME</a></li>
+      <!-- Other menu items -->
+    </ul>
+    <br>
+    <h3 class="UnderClass">CRESCENDO FORM</h3>
+    <br>
+    <div class="container">
+      <form id="dataForm">
+        <div class="label-container">
+          <span>Match Number:</span>
+          <input type="number" id="match_number" min="0">
+        </div>
+        <div class="label-container">
+          <span>Team Number:</span>
+          <input type="number" id="team_number" min="0">
+        </div>
+        <div class="label-container">
+          <span>Scouter Name:</span>
+          <input type="text" id="scouter_name">
+        </div>
+        <div class="label-container">
+          <span>Color:</span>
+          <select id="color">
+            <option value="red">Red</option>
+            <option value="blue">Blue</option>
+          </select>
+        </div>
+        <div class="label-container">
+          <span>Position:</span>
+          <div class="value-container">
+            <button type="button" onclick="decrementValue('position')">-</button>
+            <input type="number" id="position" min="1" max="3" readonly value="1">
+            <button type="button" onclick="incrementValue('position')">+</button>
+          </div>
+        </div>
+        <div class="label-container">
+          <span>Speakers Scored in Auto:</span>
+          <div class="value-container">
+            <button type="button" onclick="decrementValue('auto_score')">-</button>
+            <input type="number" id="auto_score" min="0" readonly value="0">
+            <button type="button" onclick="incrementValue('auto_score')">+</button>
+          </div>
+        </div>
+        <div class="label-container">
+          <span>Auto Move:</span>
+          <input type="checkbox" id="auto_move">
+        </div>
+        <div class="label-container">
+          <span>Auto Penalty:</span>
+          <input type="checkbox" id="auto_penalty">
+        </div>
+        <div class="label-container">
+          <span>Amy Scored in Teleop:</span>
+          <div class="value-container">
+            <button type="button" onclick="decrementValue('teleop_score')">-</button>
+            <input type="number" id="teleop_score" min="0" readonly value="0">
+            <button type="button" onclick="incrementValue('teleop_score')">+</button>
+          </div>
+        </div>
+        <div class="label-container">
+          <span>Times Ramped:</span>
+          <div class="value-container">
+            <button type="button" onclick="decrementValue('times_ramped')">-</button>
+            <input type="number" id="times_ramped" min="0" readonly value="0">
+            <button type="button" onclick="incrementValue('times_ramped')">+</button>
+          </div>
+        </div>
+        <div class="label-container">
+          <span>Co-op Point:</span>
+          <input type="checkbox" id="co_op_point">
+        </div>
+        <div class="label-container">
+          <span>High Note:</span>
+          <input type="checkbox" id="high_note">
+        </div>
+        <div class="label-container">
+          <span>Trap:</span>
+          <div class="value-container">
+            <button type="button" onclick="decrementValue('trap')">-</button>
+            <input type="number" id="trap" min="1" max="3" readonly value="1">
+            <button type="button" onclick="incrementValue('trap')">+</button>
+          </div>
+        </div>
+        <div class="label-container">
+          <span>Parking:</span>
+          <select id="parking">
+            <option value="failed">Failed</option>
+            <option value="parked">Parked</option>
+            <option value="hanging">Hanging</option>
+            <option value="harmonized">Harmonized</option>
+          </select>
+        </div>
+        <div class="label-container">
+          <span>Comments:</span>
+          <textarea id="comments"></textarea>
+        </div>
+        <div class="button-container">
+          <input type="button" value="Generate QR Code" onclick="generateQRCode()">
+        </div>
+      </form>
+      <div id="qrcode"></div>
+    </div>
+</div>
+    <footer>
+      <br>This Page is powered by GitHub Pages and the use of CORE2062 Scouting Viewer<br><br>
+    </footer>
+
+</body>
+</html>
