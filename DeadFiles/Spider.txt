@@ -8,11 +8,46 @@ BigList = []
 MiddleList = []
 MatchdataList = []
 TeamCode = { #these are examples 
-    '930': [],
-    '2062': [],
-    '1741': [],
-    '1892': [],
-    '1': []
+    '573':[],
+    '1234':[] ,
+    '789':[] ,
+    '456':[] ,
+    '9876':[],
+    '2345':[] ,
+    '6789':[] ,
+    '3456':[],
+    '8765':[] ,
+    '5432':[] ,
+    '987':[] ,
+    '4321':[] ,
+    '7654':[], 
+    '3210':[], 
+    '8888':[], 
+    '1111':[],
+    '2222':[],
+    '3333':[], 
+    '4444':[], 
+    '6666':[], 
+    '7777':[], 
+    '8887':[], 
+    '9999':[],
+    '1000':[], 
+    '2000':[], 
+    '3000':[], 
+    '4000':[], 
+    '5000':[], 
+    '6000':[], 
+    '7000':[],
+    '8000':[],
+    '9000':[], 
+    '111':[], 
+    '222':[], 
+    '333':[], 
+    '444':[], 
+    '555':[], 
+    '666':[], 
+    '777':[], 
+    '888':[], 
 }
 HTMLData = "" 
 HTMLRed = ""
@@ -20,13 +55,14 @@ HTMLBlue = ""
 CurrenMatchNumber = 1
 OldNum = 1
 
-with open("falseData.txt", "r") as UnSplitData: # replace with real data/txt files name
+with open("falsedata.txt", "r") as UnSplitData:
     AllData = UnSplitData.read()
-ListofAllSplitData = AllData.split("~")
-ListofAllSplitData.pop()
-#enter the amount of ditnarys needed to be made
+    ListofAllSplitData = AllData.split("~")
+    ListofAllSplitData.pop()
 for x in range(len(ListofAllSplitData)):
-	BigList.insert(0,ast.literal_eval((ListofAllSplitData[x])))
+    print(ListofAllSplitData[x])
+    BigList.insert(0, ast.literal_eval(ListofAllSplitData[x]))
+
 my_file = open("RawData.html", "w")
 Start = """
 <!DOCTYPE html>
@@ -78,29 +114,34 @@ Start = """
             <th>Comments</th>
 		  </tr>
 """
-for x in range(len(ListofAllSplitData)): # (BigListist[0]["COLOR"])
-		Middle = """<tr>
-		    <td> """+str(BigList[x]["COLOR"])+"""</th>     
-		    <td>"""+str(BigList[x]["POS"])+"""</th>
-		    <td>"""+str(BigList[x]["MatchNumber"])+"""</th>
-			<td>"""+str(BigList[x]["TeamNumber"])+"""</th> 
-			<td> <button class="textButton" name="""+str(BigList[x]["ScouterName"])+""">""" +str(BigList[x]["ScouterName"])+"""</button></th> 
-		    <td>AUTO</th>
-		    <td>"""+str(BigList[x]["AutosScoredInSpeakers"])+"""</th>
-            <td>"""+str(BigList[x]['MovedInAutos'])+"""</th>
-            <td>"""+str(BigList[x]['AutoPenalty'])+"""</th>
-            <td>TELOP</th>
-            <td>"""+str(BigList[x]["TeleopScoredAMP"])+"""</th>
-            <td>"""+str(BigList[x]["ScoredInSpeaker"])+"""</th>
-            <td>"""+str(BigList[x]["TimesAmplifiedTeleop"])+"""</th>
-            <td>"""+str(BigList[x]["CoopPoint"])+"""</th>
-            <td>END</th>
-            <td>"""+str(BigList[x]["ScoredTrap"])+"""</th>
-            <td>"""+str(BigList[x]["HighNote"])+"""</th>
-            <td> <button class="textButton" name="""+str(BigList[x]["parkingType"])+""">""" +str(BigList[x]["parkingType"])+"""</button></th> 
-            <td> <button class="textButton" name="""+str(BigList[x]["Comments"])+""">""" +str(BigList[x]["Comments"])+"""</button></th>
-		 </tr>"""
-		MiddleList.insert(x, Middle)
+try:
+  for x in range(len(ListofAllSplitData)): # (BigListist[0]["COLOR"])
+    print(str(BigList[x]["AutoPenalty"]))
+    Middle = """<tr>
+        <td> """+str(BigList[x]["COLOR"])+"""</th>     
+        <td>"""+str(BigList[x]["POS"])+"""</th>
+        <td>"""+str(BigList[x]["MatchNumber"])+"""</th>
+        <td>"""+str(BigList[x]["TeamNumber"])+"""</th> 
+        <td> <button class="textButton" name="""+str(BigList[x]["ScouterName"])+""">""" +str(BigList[x]["ScouterName"])+"""</button></th> 
+        <td>AUTO</th>
+        <td>"""+str(BigList[x]["AutosScoredInSpeakers"])+"""</th>
+        <td>"""+str(BigList[x]["MovedInAutos"])+"""</th>
+        <td>"""+str(BigList[x]["AutoPenalty"])+"""</th>
+        <td>TELOP</th>
+        <td>"""+str(BigList[x]["TeleopScoredAMP"])+"""</th>
+        <td>"""+str(BigList[x]["ScoredInSpeaker"])+"""</th>
+        <td>"""+str(BigList[x]["TimesAmplifiedTeleop"])+"""</th>
+        <td>"""+str(BigList[x]["Co-opPoint"])+"""</th>
+        <td>END</th>
+        <td>"""+str(BigList[x]["ScoredTrap"])+"""</th>
+        <td>"""+str(BigList[x]["HighNote"])+"""</th>
+        <td> <button class="textButton" name="""+str(BigList[x]["parkingType"])+""">""" +str(BigList[x]["parkingType"])+"""</button></th> 
+        <td> <button class="textButton" name="""+str(BigList[x]["Comments"])+""">""" +str(BigList[x]["Comments"])+"""</button></th>
+        </tr>"""
+    MiddleList.insert(x, Middle)
+except:
+  print("An exception occurred")
+
 End = """      
 </table> <!--TABLE ENDS HERE-->      
 </div>
@@ -193,13 +234,13 @@ for x in range(len(ListofAllSplitData)): # print(BigList[0]["COLOR"])
 			<td> <button class="textButton" name="""+str(BigList[x]["ScouterName"])+""">""" +str(BigList[x]["ScouterName"])+"""</button></th> 
 		    <td>AUTO</th>
 		    <td>"""+str(BigList[x]["AutosScoredInSpeakers"])+"""</th>
-            <td>"""+str(BigList[x]['MovedInAutos'])+"""</th>
-            <td>"""+str(BigList[x]['AutoPenalty'])+"""</th>
+            <td>"""+str(BigList[x]["MovedInAutos"])+"""</th>
+            <td>"""+str(BigList[x]["AutoPenalty"])+"""</th>
             <td>TELOP</th>
             <td>"""+str(BigList[x]["TeleopScoredAMP"])+"""</th>
             <td>"""+str(BigList[x]["ScoredInSpeaker"])+"""</th>
             <td>"""+str(BigList[x]["TimesAmplifiedTeleop"])+"""</th>
-            <td>"""+str(BigList[x]["CoopPoint"])+"""</th>
+            <td>"""+str(BigList[x]["Co-opPoint"])+"""</th>
             <td>END</th>
             <td>"""+str(BigList[x]["ScoredTrap"])+"""</th>
             <td>"""+str(BigList[x]["HighNote"])+"""</th>
@@ -296,13 +337,13 @@ for x in range(len(ListofAllSplitData)): # print(BigList[0]["COLOR"])
 			<td> <button class="textButton" name="""+str(BigList[x]["ScouterName"])+""">""" +str(BigList[x]["ScouterName"])+"""</button></th> 
 		    <td>AUTO</th>
 		    <td>"""+str(BigList[x]["AutosScoredInSpeakers"])+"""</th>
-            <td>"""+str(BigList[x]['MovedInAutos'])+"""</th>
-            <td>"""+str(BigList[x]['AutoPenalty'])+"""</th>
+            <td>"""+str(BigList[x]["MovedInAutos"])+"""</th>
+            <td>"""+str(BigList[x]["AutoPenalty"])+"""</th>
             <td>TELOP</th>
             <td>"""+str(BigList[x]["TeleopScoredAMP"])+"""</th>
             <td>"""+str(BigList[x]["ScoredInSpeaker"])+"""</th>
             <td>"""+str(BigList[x]["TimesAmplifiedTeleop"])+"""</th>
-            <td>"""+str(BigList[x]["CoopPoint"])+"""</th>
+            <td>"""+str(BigList[x]["Co-opPoint"])+"""</th>
             <td>END</th>
             <td>"""+str(BigList[x]["ScoredTrap"])+"""</th>
             <td>"""+str(BigList[x]["HighNote"])+"""</th>

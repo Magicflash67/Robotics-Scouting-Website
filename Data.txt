@@ -1,0 +1,66 @@
+"""{
+    "ID": "2024LLMN 35TN2062",
+    "YEAR": "2024CRESNDO",
+    "Location": "LaserLights",
+    "COLOR": "red",
+    "POS": "2",
+    "MatchNumber": "35",
+    "TeamNumber": "2062",
+    "ScouterName": "TEST",
+    "AutosScoredInSpeakers":"5",
+    "MovedInAutos": "true",
+    "AutoPenalty": "true",
+    "TeleopScoredAMP": "3",
+    "ScoredInSpeaker": "0",
+    "TimesAmplifiedTeleop": "1",
+    "Co-opPoint": "true",
+    "ScoredTrap": "8",
+    "HighNote": "true",
+    "ParkingType": "harmonized",
+    "Comments": "",
+    "AIS": "true",
+    "RobotOff": "false",
+    "CommsLost": "0",
+    "BrownOut": "false",
+    "PowerFailure": "true",
+    "ReviewMatch": "true",
+    "MechanicalFail": "false",
+    "YellowCard": "true",
+    "RedCard": "false"
+}
+"""
+#
+"""{
+    "ID": "2024LLMN 35TN930",
+    "YEAR": "2024CRESNDO",
+    "Location": "LaserLights",
+    "COLOR": "blue",
+    "POS": "4",
+    "MatchNumber": "35",
+    "TeamNumber": "930",
+    "ScouterName": "TEST",
+    "AutosScoredInSpeakers":"8",
+    "MovedInAutos": "true",
+    "AutoPenalty": "false",
+    "TeleopScoredAMP": "2",
+    "ScoredInSpeaker": "10",
+    "TimesAmplifiedTeleop": "2",
+    "Co-opPoint": "true",
+    "ScoredTrap": "12",
+    "HighNote": "true",
+    "ParkingType": "hanging",
+    "Comments": "",
+    "AIS": "true",
+    "RobotOff": "false",
+    "CommsLost": "0",
+    "BrownOut": "false",
+    "PowerFailure": "false",
+    "ReviewMatch": "true",
+    "MechanicalFail": "false",
+    "YellowCard": "true",
+    "RedCard": "false"
+}
+    
+"""
+#
+                
